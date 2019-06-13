@@ -3,9 +3,10 @@ html
     head
         title SneakChat by gwanwoodev
         link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.css')
-        
+        link(rel='stylesheet', href='css/main.css')
         script(src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js')
         script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js')
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js')
     body
         #chat-app
             #chat.has-text-centered
@@ -31,3 +32,6 @@ html
                                             input(type='text', class='input', placeholder='Try to say something', id='message')
                                         p.control
                                             input(type='submit', class='button is-success', value='Post')
+        
+        script.
+            const socket = io();
