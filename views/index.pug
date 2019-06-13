@@ -29,7 +29,7 @@ html
                                         p.control
                                             input(type='text', class='input', value='gwanwoodev', id='name')
                                         p.control.is-expanded
-                                            input(type='text', class='input', placeholder='Try to say something', id='message')
+                                            input(type='text', class='input', placeholder='Try to say something', id='message' autocomplete="off")
                                         p.control
                                             input(type='submit', class='button is-success', value='Post')
         
@@ -44,6 +44,7 @@ html
             
             socket.on('chatter', function(message) {
                 $('#chat-messages').append($('<li>').text(message));
+                $("#message").val("");
             });
             
             
