@@ -45,6 +45,7 @@ html
             socket.on('chatter', function(message) {
                 $('#chat-messages').append($('<li>').text(message));
                 $("#message").val("");
+                $("#chat-messages").scrollTop($("#chat-messages").height());
             });
             
             
