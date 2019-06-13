@@ -7,6 +7,7 @@ html
         script(src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js')
         script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js')
         script(src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js')
+        script(src='js/time.js')
     body
         #chat-app
             #chat.has-text-centered
@@ -38,7 +39,8 @@ html
             $('form').submit(function() {
                 const name = $("#name").val();
                 const message = $("#message").val();
-                socket.emit('chatter', `${name} : ${message}`);
+                const dateString = getHoursAndMinutes();
+                socket.emit('chatter', `[${dateString}] : ${name} : ${message}`);
                 return false;
             });
             
