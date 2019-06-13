@@ -1,1 +1,33 @@
-h1 Sneak Chat
+doctype html
+html
+    head
+        title SneakChat by gwanwoodev
+        link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.css')
+        
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js')
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js')
+    body
+        #chat-app
+            #chat.has-text-centered
+                section.hero.is-success
+                    .hero-body
+                        .container
+                            h1.title SneakChat
+                            h2 SneakChat Application with Node.js + Socket.io + Pug
+
+                section.section.chat-container
+                    .container
+                        .columns
+                            .box.column.is-8.is-offset-2
+                                h2.title ChatBox
+                                .chat-messages.has-text-left
+                                    ul#chat-messages
+                                
+                                form
+                                    .field.has-addons
+                                        p.control
+                                            input(type='text', class='input', value='gwanwoodev', id='name')
+                                        p.control.is-expanded
+                                            input(type='text', class='input', placeholder='Try to say something', id='message')
+                                        p.control
+                                            input(type='submit', class='button is-success', value='Post')

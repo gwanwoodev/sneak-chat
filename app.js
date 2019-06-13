@@ -1,4 +1,4 @@
-const exress = require('express');
+const express = require('express');
 const path = require('path');
 const app = express();
 
@@ -9,6 +9,7 @@ const APP_PORT = 5733
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
+app.use(express.static('public'));
 
 app.get('/', (req, res) => {
    res.render('index');
