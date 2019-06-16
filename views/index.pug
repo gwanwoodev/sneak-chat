@@ -15,7 +15,7 @@ html
                     .hero-body
                         .container
                             h1.title SneakChat
-                            h2 SneakChat Application with Node.js + Socket.io + Pug
+                            h2 SneakChat Application with Express.js + Socket.io + Pug
 
                 section.section.chat-container
                     .container
@@ -34,20 +34,6 @@ html
                                         p.control
                                             input(type='submit', class='button is-success', value='Post')
         
-        script.
-            const socket = io();
-            $('form').submit(function() {
-                const name = $("#name").val();
-                const message = $("#message").val();
-                const dateString = getHoursAndMinutes();
-                socket.emit('chatter', `[${dateString}] : ${name} : ${message}`);
-                return false;
-            });
-            
-            socket.on('chatter', function(message) {
-                $('#chat-messages').append($('<li>').text(message));
-                $("#message").val("");
-                $("#chat-messages").scrollTop($("#chat-messages").height());
-            });
+        script(src='js/chat.js')
             
             
