@@ -10,5 +10,5 @@ $('form').submit(function() {
 socket.on('chatter', function(message) {
     $('#chat-messages').append($('<li>').text(message));
     $("#message").val("");
-    $("#chat-messages").scrollTop($("#chat-messages").height());
+    $("#chat-messages").scrollTop($("#chat-messages")[0].scrollHeight);
 });
