@@ -16,7 +16,7 @@ html
                 .container
                     .columns
                         .box.column.is-8.is-offset-2
-                            #login
+                            form(id="login", action="/login", method="post")
                                 .control.has-icons-left.has-icons-right
                                     input(type="email", placeholder="email", class="input is-medium", name="email")
                                     span.icon.is-left

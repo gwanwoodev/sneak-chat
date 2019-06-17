@@ -27,8 +27,6 @@ app.get('/chat', (req, res) => {
 });
 
 
-
-
 io.on('connection', (socket) => {
     socket.broadcast.emit('a user connected');
     socket.on('chatter', (message) => {
