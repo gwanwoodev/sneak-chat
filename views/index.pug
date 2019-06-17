@@ -5,6 +5,7 @@ html
         link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.css')
         link(rel='stylesheet', href='css/all.min.css')
         link(rel='stylesheet', href='css/login.css')
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js')
         script(src='js/login.js')
     body
         #contents
@@ -29,4 +30,6 @@ html
                                     span.icon.is-right
                                         i.fas.fa-check
                                 input(type="submit", class="button is-success" value="Sign in", id="send")
-                                
+                            .content.is-small.signup
+                                a(href="/join") Not a member? Click here to join now!
+                            
