@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const app = express();
 const sqlite = require('sqlite3').verbose();
+const bodyParser = require('body-parser');
 
 const APP_PORT = 5733
 const db = new sqlite.Database('db/database.db');
@@ -18,6 +19,8 @@ const io = require('socket.io').listen(server);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false}));
 app.use(express.static('public'));
 
 app.get('/', (req, res) => {
@@ -26,6 +29,10 @@ app.get('/', (req, res) => {
 
 app.get('/chat', (req, res) => {
    res.render('chat');
+});
+
+app.post('/login', (req, res) => {
+   res.send(req.body);
 });
 
 
