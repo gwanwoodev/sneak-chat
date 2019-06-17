@@ -1,0 +1,32 @@
+doctype html
+html
+    head
+        title SneakChat Login by gwanwoodev
+        link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.css')
+        link(rel='stylesheet', href='css/all.min.css')
+        link(rel='stylesheet', href='css/login.css')
+        script(src='js/login.js')
+    body
+        #contents
+            section.hero.is-dark.is-bold
+                .container
+                    h1.title UserLogin
+            section.login-container
+                .container
+                    .columns
+                        .box.column.is-8.is-offset-2
+                            #login
+                                .control.has-icons-left.has-icons-right
+                                    input(type="email", placeholder="email", class="input is-medium", name="email")
+                                    span.icon.is-left
+                                        i.fas.fa-envelope
+                                    span.icon.is-right
+                                        i.fas.fa-check
+                                .control.has-icons-left.has-icons-right
+                                    input(type="password", placeholder="password", class="input is-medium" name="password")
+                                    span.icon.is-left
+                                        i.fas.fa-unlock-alt
+                                    span.icon.is-right
+                                        i.fas.fa-check
+                                input(type="submit", class="button is-success" value="Sign in", id="send")
+                                
