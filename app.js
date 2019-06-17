@@ -1,6 +1,14 @@
 const express = require('express');
 const path = require('path');
 const app = express();
+const sqlite = require('sqlite3').verbose();
+const db = new sqlite.Database('public/db/database.db');
+
+db.serialize(() => {
+   db.each('SELECT nickname from user', (err, row) => {
+      console.log(row.nickname);
+   });
+});
 
 const APP_PORT = 5733
 
