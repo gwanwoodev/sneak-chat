@@ -4,7 +4,7 @@ const app = express();
 const sqlite = require('sqlite3').verbose();
 const bodyParser = require('body-parser');
 
-const APP_PORT = 5733
+const APP_PORT = 5733;
 const db = new sqlite.Database('db/database.db');
 
 const server = app.listen(APP_PORT, () => {
