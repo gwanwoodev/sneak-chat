@@ -32,7 +32,14 @@ app.get('/chat', (req, res) => {
 });
 
 app.post('/login', (req, res) => {
-   res.send(req.body);
+	let username = req.body.username;
+	let password = req.body.password;
+	
+	db.each(`SELECT *FROM user WHERE id="${username}" AND pw="${password}"`, function(err, row) {
+      console.log(row);
+  	});
+	
+	
 });
 
 
