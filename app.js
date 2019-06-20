@@ -86,9 +86,17 @@ app.post('/login', (req, res) => {
 app.post('/join', (req, res) => {
     let username = req.body.username;
     let password = req.body.password;
+    let usernick = req.body.usernick;
+    
     let resultJson;
     const HTTP_STATUS_OK = 200;
     const HTTP_STATUS_NO_CONTENT = 204;
+    
+    db.run(`INSERT INTO USER(id, pw, nickname) VALUES(?, ?, ?)`, [`${username}`, `${password}`, `${usernick}`]);
+    
+    db.get(`SELECT *FROM USER`, (err, row) => {
+       console.log(row);
+    });
     
     resultJson = JSON.stringify({status: HTTP_STATUS_OK, msg: "success"});
     res.json(resultJson);
