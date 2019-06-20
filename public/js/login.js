@@ -29,6 +29,7 @@ $(document).ready(function() {
            switch(resultRow.status) {
                case 200:
                    alert('Login Success');
+                   location.href = "/chat";
                    break;
                case 204:
                    alert('Login Failed');
