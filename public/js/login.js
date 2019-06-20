@@ -3,7 +3,7 @@ $(document).ready(function() {
        //Todo Login
 	   const username = $("input[name=username]").val();
 	   const password = $("input[name=password]").val();
-	   
+	   let resultRow;
 	   // console.log(`username is ${username} and password is ${password}`);
 	   
 	   //Create JSON Data. to Fecth.
@@ -25,7 +25,15 @@ $(document).ready(function() {
 		   body: JSON.stringify(params)
 	   })
        const content = await rawResponse.json();
-       console.log(JSON.parse(content).ok);
-    })();
+       resultRow = JSON.parse(content);
+           switch(resultRow.status) {
+               case 200:
+                   alert('Login Success');
+                   break;
+               case 204:
+                   alert('Login Failed');
+                   break;
+           }
+       })();
    });
 });

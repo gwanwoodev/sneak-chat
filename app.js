@@ -34,13 +34,19 @@ app.get('/chat', (req, res) => {
 app.post('/login', (req, res) => {
 	let username = req.body.username;
 	let password = req.body.password;
-	
-	db.each(`SELECT idx, id, nickname FROM user WHERE id="${username}" AND pw="${password}"`, function(err, row) {
-      console.log(row);
-  	});
-	
-	const resultJson = JSON.stringify({ok: 200, msg: 'success fetch test'});
-	res.json(resultJson);
+    let resultJson;
+    const HTTP_STATUS_OK = 200;
+    const HTTP_STATUS_NO_CONTENT = 204;
+    
+    db.get(`SELECT idx, id, nickname FROM user WHERE id="${username}" AND pw="${password}"`, (err, row) => {
+        if(row) {
+            resultJson = JSON.stringify({status: HTTP_STATUS_OK, msg: 'success', data: row});
+        }else {
+            resultJson = JSON.stringify({status: HTTP_STATUS_NO_CONTENT, msg: 'nocontent', data: ''});
+        }
+    
+	    res.json(resultJson);
+    });
 });
 
 
