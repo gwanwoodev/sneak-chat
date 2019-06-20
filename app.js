@@ -48,6 +48,11 @@ app.get('/chat', (req, res) => {
    else res.redirect('/');
 });
 
+app.get('/register', (req, res) => {
+   res.render('register');
+});
+
+/* login */
 app.post('/login', (req, res) => {
 	let username = req.body.username;
 	let password = req.body.password;    
@@ -75,6 +80,18 @@ app.post('/login', (req, res) => {
 	        res.json(resultJson);
         });
     }
+});
+
+/* join */
+app.post('/join', (req, res) => {
+    let username = req.body.username;
+    let password = req.body.password;
+    let resultJson;
+    const HTTP_STATUS_OK = 200;
+    const HTTP_STATUS_NO_CONTENT = 204;
+    
+    resultJson = JSON.stringify({status: HTTP_STATUS_OK, msg: "success"});
+    res.json(resultJson);
 });
 
 

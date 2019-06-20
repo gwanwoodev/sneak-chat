@@ -1,26 +1,32 @@
 doctype html
 html
     head
-        title SneakChat Login by gwanwoodev
+        title SneakChat Register by gwanwoodev
         link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.css')
         link(rel='stylesheet', href='css/all.min.css')
         link(rel='stylesheet', href='css/user.css')
         script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js')
-        script(src='js/login.js')
+        script(src='js/register.js')
     body
         #contents
             section.hero.is-dark.is-bold
                 .container
-                    h1.title UserLogin
+                    h1.title UserRegister
             section.login-container
                 .container
                     .columns
                         .box.column.is-8.is-offset-2
-                            form(id="login", action="/login", method="post")
+                            form(id="register", action="/join", method="post")
                                 .control.has-icons-left.has-icons-right
-                                    input(type="text", placeholder="username", class="input is-medium", name="username")
+                                    input(type="text", placeholder="userid", class="input is-medium", name="username")
                                     span.icon.is-left
                                         i.far.fa-user
+                                    span.icon.is-right
+                                        i.fas.fa-check
+                                .control.has-icons-left.has-icons-right
+                                    input(type="text", placeholder="nickname", class="input is-medium", name="usernick")
+                                    span.icon.is-left
+                                        i.fas.fa-user-edit
                                     span.icon.is-right
                                         i.fas.fa-check
                                 .control.has-icons-left.has-icons-right
@@ -29,7 +35,7 @@ html
                                         i.fas.fa-unlock-alt
                                     span.icon.is-right
                                         i.fas.fa-check
-                                input(type="button", class="button is-success" value="Sign in", id="send")
+                                input(type="button", class="button is-success" value="Sign up", id="send")
                             .content.is-small.signup
-                                a(href="/register") Not a member? Click here to join now!
+                                a(href="/join") Not a member? Click here to join now!
                             
