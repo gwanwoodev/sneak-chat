@@ -14,19 +14,18 @@ $(document).ready(function() {
 	   
 	   //fetch to /login.
 	   
-	   fetch('/login',
+       (async () => {
+	   const rawResponse = await fetch('/login',
 		{
 		   method: 'POST',
 		   headers: {
+             "Accept": "application/json",
 			 "Content-Type": "application/json"
 		   },
 		   body: JSON.stringify(params)
 	   })
-	   .then((res) => {
-		   if(res.ok) return res.text();
-	   })
-	   .then((text) => {
-		  $("#send").text(text);
-	   });
+       const content = await rawResponse.json();
+       console.log(JSON.parse(content).ok);
+    })();
    });
 });

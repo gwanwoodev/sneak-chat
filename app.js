@@ -4,7 +4,7 @@ const app = express();
 const sqlite = require('sqlite3').verbose();
 const bodyParser = require('body-parser');
 
-const APP_PORT = 80;
+const APP_PORT = 5733;
 const db = new sqlite.Database('db/database.db');
 
 const server = app.listen(APP_PORT, () => {
@@ -35,11 +35,11 @@ app.post('/login', (req, res) => {
 	let username = req.body.username;
 	let password = req.body.password;
 	
-	db.each(`SELECT *FROM user WHERE id="${username}" AND pw="${password}"`, function(err, row) {
+	db.each(`SELECT idx, id, nickname FROM user WHERE id="${username}" AND pw="${password}"`, function(err, row) {
       console.log(row);
   	});
 	
-	const resultJson = JSON.stringify({ok: 200, text: 'success fetch test'});
+	const resultJson = JSON.stringify({ok: 200, msg: 'success fetch test'});
 	res.json(resultJson);
 });
 
