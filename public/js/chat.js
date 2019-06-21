@@ -5,7 +5,7 @@ window.onload = () => {
 
 const socket = io();
 
-socket.on('chatter', function(message) {
+socket.on('chatter', (message) => {
     $('#chat-messages').append($('<li>').text(message));
     $("#chat-messages").scrollTop($("#chat-messages")[0].scrollHeight);
     
@@ -19,7 +19,12 @@ socket.on('chatter', function(message) {
     }, 2000);
 });
 
-socket.on('broadcast', function(message) {
+socket.on('broadcast', (message) => {
+    $('#chat-messages').append($('<li>').text(message));
+    $("#chat-messages").scrollTop($("#chat-messages")[0].scrollHeight);
+});
+
+socket.on('disconnect', (message) => {
     $('#chat-messages').append($('<li>').text(message));
     $("#chat-messages").scrollTop($("#chat-messages")[0].scrollHeight);
 });
