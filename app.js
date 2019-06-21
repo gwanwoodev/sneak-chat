@@ -119,10 +119,9 @@ app.post('/join', (req, res) => {
 
 
 io.on('connection', (socket) => {
-	if(socket.handshake.session.user !== undefined) {
-		const connectUser = socket.handshake.session.user.nickname;
+	const connectUser = socket.handshake.session.user.nickname;
+	if(connectUser !== undefined)
 		socket.broadcast.emit('broadcast', `[Admin] a "${connectUser}" connected.`);	
-	}
     
     socket.on('chatter', (message) => {
         console.log(message);
