@@ -5,6 +5,7 @@ const sqlite = require('sqlite3').verbose();
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const expressSession = require('express-session');
+const sharedSession = require('express-socket.io-session');
 
 const APP_PORT = 5733;
 const db = new sqlite.Database('db/database.db');
@@ -37,6 +38,9 @@ app.use(expressSession({
         maxAge: 1000 * 60 * 60 * 24 // 24hours.
     }
 }));
+
+/* socket shared express-session settings */
+io.use(sharedSession(expressSession()));
 
 app.get('/', (req, res) => {
     if(req.session.user) res.render('chat', {sessionData: req.session.user});
@@ -74,6 +78,7 @@ app.post('/login', (req, res) => {
                     id: row.id,
                     nickname: row.nickname
                 };
+                
             }else {
                 resultJson = JSON.stringify({status: HTTP_STATUS_NO_CONTENT, msg: 'nocontent', data: ''});
             }
@@ -110,6 +115,7 @@ app.post('/join', (req, res) => {
 
 
 io.on('connection', (socket) => {
+    console.log(socket.handshake.session);
     socket.broadcast.emit('broadcast', '[Admin] a user connected.');
     socket.on('chatter', (message) => {
         console.log(message);
