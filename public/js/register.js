@@ -4,14 +4,14 @@ $(document).ready(function() {
 	   const username = $("input[name=username]").val();
        const usernick = $("input[name=usernick]").val();
 	   const password = $("input[name=password]").val();
-       
+       const sha256Password = SHA256(password);
 	   let resultRow;
 	   // console.log(`username is ${username} and password is ${password}`);
 	   
 	   //Create JSON Data. to Fecth.
 	   const params = {
 		   'username': username,
-		   'password': password,
+		   'password': sha256Password,
            'usernick': usernick
 	   };
 	   
