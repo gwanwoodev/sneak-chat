@@ -19,12 +19,12 @@ socket.on('chatter', (message) => {
     }, 2000);
 });
 
-socket.on('broadcast', (message) => {
+socket.on('broadcast', (message, connectList) => {
     $('#chat-messages').append($('<li>').text(message));
     $("#chat-messages").scrollTop($("#chat-messages")[0].scrollHeight);
 });
 
-socket.on('disconnect', (message) => {
+socket.on('disconnect', (message, connectList) => {
     $('#chat-messages').append($('<li>').text(message));
     $("#chat-messages").scrollTop($("#chat-messages")[0].scrollHeight);
 });

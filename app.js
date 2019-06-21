@@ -118,10 +118,13 @@ app.post('/join', (req, res) => {
 });
 
 
-io.on('connection', (socket) => {
+let connectList = {"userCount": 0, "onlineList": []}; // connectUserInformationList
+io.on('connection', (socket) => {	
 	const connectUser = socket.handshake.session.user;
+	
 	if(connectUser !== undefined)
-		socket.broadcast.emit('broadcast', `[Admin] a "${connectUser.nickname}" connected.`);	
+		socket.broadcast.emit('broadcast', `[Admin] a "${connectUser.nickname}" connected.`, connectList);	
+	
     
     socket.on('chatter', (message) => {
         console.log(message);
@@ -130,6 +133,38 @@ io.on('connection', (socket) => {
     
     socket.on('disconnect', () => {
 		if(!connectUser) return;
-        io.emit('disconnect', `[Admin] a "${connectUser.nickname} disconnected.`);
+        io.emit('disconnect', `[Admin] a "${connectUser.nickname} disconnected.`, connectList);
+		insertConnectUserList();
+		
     });
+	
+	insertConnectUserList();
 });
+
+/* io Functions */
+
+//Get Online Users Count.
+function getConnectUserCount() {
+	return io.engine.clientsCount;
+}
+
+//insert connectList <- users info.
+function insertConnectUserList() {
+	io.clients((error, clients) => {
+		for(let client of clients) {
+			let clientSocket = io.sockets.connected[client];
+			let csSessionData = clientSocket.handshake.session.user;
+			
+			let userIDX = csSessionData.idx;
+			let userNick = csSessionData.nickname;
+			let connectTotalUsers = getConnectUserCount();
+			let json = `{"idx": ${userIDX}, "nickname": ${userNick}}`;
+			
+			connectList.userCount = connectTotalUsers;
+			
+			if(!connectList.onlineList.includes(json))
+				connectList.onlineList.push(json);
+			
+		}
+	});
+}
