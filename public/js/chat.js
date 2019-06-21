@@ -22,11 +22,13 @@ socket.on('chatter', (message) => {
 socket.on('broadcast', (message, connectList) => {
     $('#chat-messages').append($('<li>').text(message));
     $("#chat-messages").scrollTop($("#chat-messages")[0].scrollHeight);
+	console.log(connectList);
 });
 
 socket.on('disconnect', (message, connectList) => {
     $('#chat-messages').append($('<li>').text(message));
     $("#chat-messages").scrollTop($("#chat-messages")[0].scrollHeight);
+	console.log(connectList);
 });
 
 $('form').submit(function() {

@@ -123,7 +123,9 @@ io.on('connection', (socket) => {
 	const connectUser = socket.handshake.session.user;
 	
 	if(connectUser !== undefined) {
-		insertConnectUserList();
+		connectList.onlineList.push(getConnectUserList(socket));
+		connectList.userCount = getConnectUserCount();
+		
 		socket.broadcast.emit('broadcast', `[Admin] a "${connectUser.nickname}" connected.`, connectList);	
 	}
 	
@@ -135,7 +137,8 @@ io.on('connection', (socket) => {
     
     socket.on('disconnect', () => {
 		if(!connectUser) return;
-		insertConnectUserList();
+		connectList.onlineList.splice(connectList.onlineList.indexOf(connectUser), 1);
+		connectList.userCount = getConnectUserCount();
         io.emit('disconnect', `[Admin] a "${connectUser.nickname} disconnected.`, connectList);
 		
 		
@@ -151,23 +154,14 @@ function getConnectUserCount() {
 	return io.engine.clientsCount;
 }
 
-//insert connectList <- users info.
-function insertConnectUserList() {
-	io.clients((error, clients) => {
-		for(let client of clients) {
-			let clientSocket = io.sockets.connected[client];
-			let csSessionData = clientSocket.handshake.session.user;
-			
-			let userIDX = csSessionData.idx;
-			let userNick = csSessionData.nickname;
-			let connectTotalUsers = getConnectUserCount();
-			let json = `{"idx": ${userIDX}, "nickname": ${userNick}}`;
-			
-			connectList.userCount = connectTotalUsers;
-			
-			if(!connectList.onlineList.includes(json))
-				connectList.onlineList.push(json);
-			
-		}
-	});
+//Get Connect Users List JSON.
+function getConnectUserList(socket) {
+	let csSessionData = socket.handshake.session.user;
+	let userIDX = csSessionData.idx;
+	let userNick = csSessionData.nickname;
+	let socID = socket.id;
+	let connectTotalUsers = getConnectUserCount();
+	let json = `{"idx": ${userIDX}, "nickname": ${userNick}, "socID": ${socID}}`;
+	
+	return json;
 }
