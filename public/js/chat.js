@@ -19,6 +19,11 @@ socket.on('chatter', function(message) {
     }, 2000);
 });
 
+socket.on('broadcast', function(message) {
+    $('#chat-messages').append($('<li>').text(message));
+    $("#chat-messages").scrollTop($("#chat-messages")[0].scrollHeight);
+});
+
 $('form').submit(function() {
     const message = $("#message").val();
 	$("#message").val("");

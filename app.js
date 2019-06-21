@@ -110,7 +110,7 @@ app.post('/join', (req, res) => {
 
 
 io.on('connection', (socket) => {
-    socket.broadcast.emit('a user connected');
+    socket.broadcast.emit('broadcast', '[Admin] a user connected.');
     socket.on('chatter', (message) => {
         console.log(message);
         io.emit('chatter', message);
