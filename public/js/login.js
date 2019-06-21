@@ -24,7 +24,7 @@ $(document).ready(function() {
 			 "Content-Type": "application/json"
 		   },
 		   body: JSON.stringify(params)
-	   })
+	   });
        const content = await rawResponse.json();
        resultRow = JSON.parse(content);
            switch(resultRow.status) {
