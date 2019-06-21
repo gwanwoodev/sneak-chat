@@ -39,12 +39,12 @@ app.use(expressSession({
 }));
 
 app.get('/', (req, res) => {
-    if(req.session.user) res.render('chat');
+    if(req.session.user) res.render('chat', {sessionData: req.session.user});
     else res.render('index');
 });
 
 app.get('/chat', (req, res) => {
-   if(req.session.user) res.render('chat');
+   if(req.session.user) res.render('chat', {sessionData: req.session.user});
    else res.redirect('/');
 });
 

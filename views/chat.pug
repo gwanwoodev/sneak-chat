@@ -31,7 +31,11 @@ html
                                             input(type='text', class='input', placeholder='Try to say something', id='message' autocomplete="off")
                                         p.control
                                             input(type='submit', class='button is-success', value='Post')
-        
+                                            
+                                            
+        script.
+            let user = `#{JSON.stringify(sessionData)}`;
+            user = JSON.parse(user.replace(/&quot;/g, '"'));
         script(src='js/chat.js')
             
             
