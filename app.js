@@ -119,9 +119,9 @@ app.post('/join', (req, res) => {
 
 
 io.on('connection', (socket) => {
-	const connectUser = socket.handshake.session.user.nickname;
+	const connectUser = socket.handshake.session.user;
 	if(connectUser !== undefined)
-		socket.broadcast.emit('broadcast', `[Admin] a "${connectUser}" connected.`);	
+		socket.broadcast.emit('broadcast', `[Admin] a "${connectUser.nickname}" connected.`);	
     
     socket.on('chatter', (message) => {
         console.log(message);
@@ -129,6 +129,7 @@ io.on('connection', (socket) => {
     });
     
     socket.on('disconnect', () => {
-       io.emit('[Admin] a user disconnected.');
+		if(!connectUser) return;
+        io.emit('disconnect', `[Admin] a "${connectUser.nickname} disconnected.`);
     });
 });
