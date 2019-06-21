@@ -127,7 +127,9 @@ io.on('connection', (socket) => {
 		connectList.onlineList.push(getConnectUserList(socket));
 		connectList.userCount = getConnectUserCount();
 		
-		socket.emit('broadcast', `[Admin] a "${connectUser.nickname}" connected.`, connectList);	
+		socket.broadcast.emit('broadcast', `[Admin] a "${connectUser.nickname}" connected.`, connectList);
+		socket.emit('broadcast', `[Admin] a "${connectUser.nickname}" connected.`, connectList);
+		
 	}
 	
     
