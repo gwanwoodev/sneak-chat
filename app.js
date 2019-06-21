@@ -91,15 +91,21 @@ app.post('/join', (req, res) => {
     let resultJson;
     const HTTP_STATUS_OK = 200;
     const HTTP_STATUS_NO_CONTENT = 204;
+    const HTTP_STATUS_BAD_REQUEST = 400;
     
-    db.run(`INSERT INTO USER(id, pw, nickname) VALUES(?, ?, ?)`, [`${username}`, `${password}`, `${usernick}`]);
+    /* Check User */
     
-    db.get(`SELECT *FROM USER`, (err, row) => {
-       console.log(row);
+    db.get(`SELECT id FROM user WHERE id="${username}"`, (err, row) => {
+        if(row) {
+           resultJson = JSON.stringify({status: HTTP_STATUS_BAD_REQUEST, msg: 'failed', data: ''});
+           res.json(resultJson);
+       }else {
+           db.run(`INSERT INTO USER(id, pw, nickname) VALUES(?, ?, ?)`, [`${username}`, `${password}`, `${usernick}`]);
+           resultJson = JSON.stringify({status: HTTP_STATUS_OK, msg: 'success', data: ''});
+           
+           res.json(resultJson);
+       }
     });
-    
-    resultJson = JSON.stringify({status: HTTP_STATUS_OK, msg: "success"});
-    res.json(resultJson);
 });
 
 

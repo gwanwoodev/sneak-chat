@@ -32,10 +32,10 @@ $(document).ready(function() {
            switch(resultRow.status) {
                case 200:
                    alert('Register Success');
-                   console.log(resultRow.msg);
+                   location.href = "/";
                    break;
-               case 204:
-                   alert('Register Failed');
+               case 400:
+                   alert('Register Failed\nid already exists');
                    break;
            }
        })();
