@@ -1,0 +1,28 @@
+body {
+	font-family: Avenir, Helvetica, Arial, sans-serif;
+}
+
+.title {
+	text-align: center;
+}
+
+.box {
+	margin-bottom: 0.5rem !important;
+}
+
+.online_box {
+	margin-right: 0.5rem;
+}
+
+.mediabox {
+	display: flex;
+	align-items: center;
+}
+
+.online-box {
+	color: #34B443;
+}
+
+.section-container {
+	padding: 0px;
+}

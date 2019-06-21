@@ -60,6 +60,7 @@ app.get('/register', (req, res) => {
    res.render('register');
 });
 
+
 /* login */
 app.post('/login', (req, res) => {
 	let username = req.body.username;
