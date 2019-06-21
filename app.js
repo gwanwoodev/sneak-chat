@@ -122,8 +122,10 @@ let connectList = {"userCount": 0, "onlineList": []}; // connectUserInformationL
 io.on('connection', (socket) => {	
 	const connectUser = socket.handshake.session.user;
 	
-	if(connectUser !== undefined)
+	if(connectUser !== undefined) {
+		insertConnectUserList();
 		socket.broadcast.emit('broadcast', `[Admin] a "${connectUser.nickname}" connected.`, connectList);	
+	}
 	
     
     socket.on('chatter', (message) => {
@@ -133,12 +135,13 @@ io.on('connection', (socket) => {
     
     socket.on('disconnect', () => {
 		if(!connectUser) return;
-        io.emit('disconnect', `[Admin] a "${connectUser.nickname} disconnected.`, connectList);
 		insertConnectUserList();
+        io.emit('disconnect', `[Admin] a "${connectUser.nickname} disconnected.`, connectList);
+		
 		
     });
 	
-	insertConnectUserList();
+	
 });
 
 /* io Functions */
