@@ -30,17 +30,21 @@ app.use(express.static('public'));
 app.use(cookieParser());
 
 //settings session environment
-app.use(expressSession({
+const session = expressSession({
     secret: 'a;lkjffdsa;afdsk',
     resave: true,
     saveUninitialized: true,
     cookie: {
         maxAge: 1000 * 60 * 60 * 24 // 24hours.
     }
-}));
+});
+
+app.use(session);
 
 /* socket shared express-session settings */
-io.use(sharedSession(expressSession()));
+io.use(sharedSession(session, {
+	autoSave: true
+}));
 
 app.get('/', (req, res) => {
     if(req.session.user) res.render('chat', {sessionData: req.session.user});
@@ -115,8 +119,11 @@ app.post('/join', (req, res) => {
 
 
 io.on('connection', (socket) => {
-    console.log(socket.handshake.session);
-    socket.broadcast.emit('broadcast', '[Admin] a user connected.');
+	if(socket.handshake.session.user !== undefined) {
+		const connectUser = socket.handshake.session.user.nickname;
+		socket.broadcast.emit('broadcast', `[Admin] a "${connectUser}" connected.`);	
+	}
+    
     socket.on('chatter', (message) => {
         console.log(message);
         io.emit('chatter', message);
