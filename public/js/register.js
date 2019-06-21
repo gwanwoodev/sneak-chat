@@ -1,5 +1,5 @@
 $(document).ready(function() {
-   $("#send").click((evt)=> {
+   $("#send").click((evt) => {
        //Todo Register
 	   const username = $("input[name=username]").val();
        const usernick = $("input[name=usernick]").val();
@@ -12,7 +12,7 @@ $(document).ready(function() {
 	   const params = {
 		   'username': username,
 		   'password': sha256Password,
-           'usernick': usernick
+           'usernick': usernick.trim()
 	   };
 	   
 	   //fetch to /join
