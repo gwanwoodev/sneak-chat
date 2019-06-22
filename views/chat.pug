@@ -10,6 +10,7 @@ html
 		script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js')
 		script(src='js/time.js')
 	body
+		include online
 		#chat-app
 			#chat.has-text-centered
 				section.hero.is-dark.is-bold
@@ -21,8 +22,8 @@ html
 				section.section.chat-container
 					.container
 						.columns
-							include online
-							
+							.box.column.is-3.online_box
+								
 							.box.column.is-7
 								h2.title ChatBox
 								.chat-messages.has-text-left

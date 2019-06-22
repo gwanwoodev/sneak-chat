@@ -164,7 +164,7 @@ function getConnectUserList(socket) {
 	let userNick = csSessionData.nickname;
 	let socID = socket.id;
 	let connectTotalUsers = getConnectUserCount();
-	let json = `{"idx": ${userIDX}, "nickname": ${userNick}, "socID": ${socID}}`;
+	let json = `{"idx": ${userIDX}, "nickname": "${userNick}", "socID": "${socID}"}`;
 	
 	return json;
 }
