@@ -142,7 +142,7 @@ io.on('connection', (socket) => {
 		if(!connectUser) return;
 		connectList.onlineList.splice(connectList.onlineList.indexOf(connectUser), 1);
 		connectList.userCount = getConnectUserCount();
-        io.emit('disconnect', `[Admin] a "${connectUser.nickname} disconnected.`, connectList);
+        io.emit('disconnect', `[Admin] a "${connectUser.nickname}" disconnected.`, connectList);
 		
 		
     });

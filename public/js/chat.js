@@ -37,7 +37,7 @@ $('form').submit(function() {
     const message = $("#message").val();
 	$("#message").val("");
     const dateString = getHoursAndMinutes();
-    socket.emit('chatter', `[${dateString}] : ${user.nickname} : ${message}`);
+    socket.emit('chatter', `[${dateString}] ${user.nickname} : ${message}`);
     return false;
 });
 
