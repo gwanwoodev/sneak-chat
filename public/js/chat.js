@@ -20,16 +20,25 @@ const blink = () => {
 
 
 socket.on('chatter', (message) => {
-    let bytes = CryptoJS.AES.decrypt(message, 'king');
-    let decrpytMessage = bytes.toString(CryptoJS.enc.Utf8);
+    let decryptChat = decryptMessage(message);
     
-    $('#chat-messages').append($('<li>').text(decrpytMessage));
+    $('#chat-messages').append($('<li>').text(decryptChat));
     $("#chat-messages").scrollTop($("#chat-messages")[0].scrollHeight);
     
     /* New Message Notification. */
     if(!timeoutID) timeoutID = setInterval(blink, 500);
     
     
+});
+
+//Get Messages History.
+socket.on('message', (history) => {
+	for(let i=0; i<history.length; i++) {
+		let decryptChat = decryptMessage(history[i]);
+		$('#chat-messages').append($('<li>').text(decryptChat));
+	}
+	
+	$('#chat-messages').scrollTop($('#chat-messages')[0].scrollHeight);
 });
 
 socket.on('broadcast', (message, connectList) => {
@@ -54,6 +63,15 @@ $('form').submit(function() {
     return false;
 });
 
+// Decrypt Messages.
+function decryptMessage(message) {
+	let bytes = CryptoJS.AES.decrypt(message, 'king');
+    let decryptMessage = bytes.toString(CryptoJS.enc.Utf8);
+	
+	return decryptMessage;
+}
+
+//Get Users.
 function getUsers(connectList) {
 	let templateheader = `<h2 class="title">Online Users ${connectList.userCount}</h2>
 		<hr>`;

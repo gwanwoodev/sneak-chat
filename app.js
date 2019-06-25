@@ -120,21 +120,24 @@ app.post('/join', (req, res) => {
 
 
 let connectList = {"userCount": 0, "onlineList": []}; // connectUserInformationList
+let messageHistory = [];
 io.on('connection', (socket) => {	
 	const connectUser = socket.handshake.session.user;
 	
 	if(connectUser !== undefined) {
 		connectList.onlineList.push(getConnectUserList(socket));
 		connectList.userCount = getConnectUserCount();
+		let broadcastMessage = `[Admin] a "${connectUser.nickname}" connected.`;
+		socket.broadcast.emit('broadcast', broadcastMessage, connectList);
+		socket.emit('broadcast', broadcastMessage, connectList);
 		
-		socket.broadcast.emit('broadcast', `[Admin] a "${connectUser.nickname}" connected.`, connectList);
-		socket.emit('broadcast', `[Admin] a "${connectUser.nickname}" connected.`, connectList);
-		
+		socket.send(messageHistory);
 	}
 	
-    
+	
     socket.on('chatter', (message) => {
         let encryptMessage = CryptoJS.AES.encrypt(message, 'king');
+		messageHistory.push(encryptMessage.toString());
         io.emit('chatter', encryptMessage.toString());
     });
     
@@ -142,9 +145,8 @@ io.on('connection', (socket) => {
 		if(!connectUser) return;
 		connectList.onlineList.splice(connectList.onlineList.indexOf(connectUser), 1);
 		connectList.userCount = getConnectUserCount();
-        io.emit('disconnect', `[Admin] a "${connectUser.nickname}" disconnected.`, connectList);
-		
-		
+		let broadcastMessage = `[Admin] a "${connectUser.nickname}" disconnected.`;
+        io.emit('disconnect', broadcastMessage, connectList);
     });
 	
 	
