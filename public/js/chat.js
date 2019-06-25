@@ -4,6 +4,19 @@ window.onload = () => {
 };
 
 const socket = io();
+const oldTitle = document.title;
+const msg = "New Message!";
+let timeoutID = false;
+
+const blink = () => {
+    document.title = document.title === msg ? oldTitle : msg;
+    
+    if(document.hasFocus()) {
+        document.title = oldTitle;
+        clearInterval(timeoutID);
+    }
+};
+
 
 socket.on('chatter', (message) => {
     let bytes = CryptoJS.AES.decrypt(message, 'king');
@@ -11,6 +24,12 @@ socket.on('chatter', (message) => {
     
     $('#chat-messages').append($('<li>').text(decrpytMessage));
     $("#chat-messages").scrollTop($("#chat-messages")[0].scrollHeight);
+    
+    /* New Message Notification. */
+    if(!timeoutID) timeoutID = setInterval(blink, 500);
+    if(!document.hasFocus()) timeoutID = setInterval(blink, 500);
+    
+    
 });
 
 socket.on('broadcast', (message, connectList) => {
