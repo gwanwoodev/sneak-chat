@@ -11,15 +11,6 @@ socket.on('chatter', (message) => {
     
     $('#chat-messages').append($('<li>').text(decrpytMessage));
     $("#chat-messages").scrollTop($("#chat-messages")[0].scrollHeight);
-    
-    let notification = new Notification('SneakChat', {
-        icon: 'icons/push.png',
-        body: decrpytMessage
-    });
-    
-    setTimeout(()=> {
-       notification.close(); 
-    }, 2000);
 });
 
 socket.on('broadcast', (message, connectList) => {
