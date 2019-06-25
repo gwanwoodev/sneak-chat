@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const expressSession = require('express-session');
 const sharedSession = require('express-socket.io-session');
-
+const CryptoJS = require('crypto-js');
 const APP_PORT = 80;
 const db = new sqlite.Database('db/database.db');
 
@@ -134,8 +134,8 @@ io.on('connection', (socket) => {
 	
     
     socket.on('chatter', (message) => {
-        console.log(message);
-        io.emit('chatter', message);
+        let encryptMessage = CryptoJS.AES.encrypt(message, 'king');
+        io.emit('chatter', encryptMessage.toString());
     });
     
     socket.on('disconnect', () => {

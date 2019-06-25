@@ -6,12 +6,15 @@ window.onload = () => {
 const socket = io();
 
 socket.on('chatter', (message) => {
-    $('#chat-messages').append($('<li>').text(message));
+    let bytes = CryptoJS.AES.decrypt(message, 'king');
+    let decrpytMessage = bytes.toString(CryptoJS.enc.Utf8);
+    
+    $('#chat-messages').append($('<li>').text(decrpytMessage));
     $("#chat-messages").scrollTop($("#chat-messages")[0].scrollHeight);
     
     let notification = new Notification('SneakChat', {
         icon: 'icons/push.png',
-        body: message
+        body: decrpytMessage
     });
     
     setTimeout(()=> {

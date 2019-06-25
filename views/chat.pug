@@ -1,41 +1,42 @@
 doctype html
 html
-	head
-		title SneakChat by gwanwoodev
-		link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.css')
-		link(rel='stylesheet', href='css/chat.css')
-		link(rel='stylesheet', href='css/all.min.css')
-		link(rel='stylesheet', href='css/online.css')
-		script(src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js')
-		script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js')
-		script(src='js/time.js')
-	body
-		#chat-app
-			#chat.has-text-centered
-				section.hero.is-dark.is-bold
-					.hero-body
-						.container
-							h1.title SneakChat
-							h2 SneakChat Application with Express.js + Socket.io + Pug
+    head
+        title SneakChat by gwanwoodev
+        link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.css')
+        link(rel='stylesheet', href='css/chat.css')
+        link(rel='stylesheet', href='css/all.min.css')
+        link(rel='stylesheet', href='css/online.css')
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js')
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js')
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js')
+        script(src='js/time.js')
+    body
+        #chat-app
+            #chat.has-text-centered
+                section.hero.is-dark.is-bold
+                    .hero-body
+                        .container
+                            h1.title SneakChat
+                            h2 SneakChat Application with Express.js + Socket.io + Pug
 
-				section.section.chat-container
-					.container
-						.columns
-							.box.column.is-2.online_box
+                section.section.chat-container
+                    .container
+                        .columns
+                            .box.column.is-2.online_box
 								
-							.box.column.is-7
-								h2.title ChatBox
-								.chat-messages.has-text-left
-									ul#chat-messages
+                            .box.column.is-7
+                                h2.title ChatBox
+                                .chat-messages.has-text-left
+                                    ul#chat-messages
                                 
-								form
-									.field.has-addons
-										p.control.is-expanded
-											input(type='text', class='input', placeholder='Try to say something', id='message' autocomplete="off")
-										p.control
-											input(type='submit', class='button is-success', value='Post')
+                                form
+                                    .field.has-addons
+                                        p.control.is-expanded
+                                            input(type='text', class='input', placeholder='Try to say something', id='message' autocomplete="off")
+                                        p.control
+                                            input(type='submit', class='button is-success', value='Post')
                                             
-		script.
-			let user = `#{JSON.stringify(sessionData)}`;
-			user = JSON.parse(user.replace(/&quot;/g, '"'));
-		script(src='js/chat.js')
+        script.
+            let user = `#{JSON.stringify(sessionData)}`;
+            user = JSON.parse(user.replace(/&quot;/g, '"'));
+        script(src='js/chat.js')
