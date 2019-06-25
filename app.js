@@ -152,6 +152,15 @@ io.on('connection', (socket) => {
 	
 });
 
+/* Delete Message History */
+
+function deleteMessageHistory() {
+	console.log('Delete Message History.');
+	messageHistory = [];
+}
+
+setInterval(deleteMessageHistory, 1000 * 60 * 60 * 24);
+
 /* io Functions */
 
 //Get Online Users Count.
