@@ -29,7 +29,6 @@ $(document).ready(function() {
        resultRow = JSON.parse(content);
            switch(resultRow.status) {
                case 200:
-                   alert('Login Success');
                    location.href = "/chat";
                    break;
                case 204:
@@ -38,4 +37,11 @@ $(document).ready(function() {
            }
        })();
    });
+    
+    
+    //Enter Event
+    
+    $("input[name=password]").keydown((evt) => {
+       if(evt.keyCode === 13) $("#send").click();
+    });
 });
