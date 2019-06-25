@@ -14,6 +14,7 @@ const blink = () => {
     if(document.hasFocus()) {
         document.title = oldTitle;
         clearInterval(timeoutID);
+        timeoutID = false;
     }
 };
 
@@ -27,7 +28,6 @@ socket.on('chatter', (message) => {
     
     /* New Message Notification. */
     if(!timeoutID) timeoutID = setInterval(blink, 500);
-    if(!document.hasFocus()) timeoutID = setInterval(blink, 500);
     
     
 });

@@ -1,4 +1,5 @@
 $(document).ready(function() {
+   $("input[name=username]").focus();
    $("#send").click((evt)=> {
        //Todo Login
 	   const username = $("input[name=username]").val();
