@@ -1,8 +1,3 @@
-window.onload = () => {
-    if(window.Notification)
-        Notification.requestPermission();
-};
-
 const socket = io();
 const oldTitle = document.title;
 const msg = "New Message!";
