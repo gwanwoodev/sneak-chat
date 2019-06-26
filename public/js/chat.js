@@ -2,6 +2,7 @@ const socket = io();
 const oldTitle = document.title;
 const msg = "New Message!";
 let timeoutID = false;
+let dummyHTML = '';
 
 const blink = () => {
     document.title = document.title === msg ? oldTitle : msg;
@@ -13,6 +14,22 @@ const blink = () => {
     }
 };
 
+// Loading Dummy HTML
+
+$.ajax({
+    url: '/dummy/dummy.txt',
+    method: 'GET',
+    success: function(data) {
+        dummyHTML = data;
+    }
+});
+
+$('body').keydown((evt) => {
+   if(evt.keyCode === 36) {
+       $('html').text("");
+       $('html').html(dummyHTML);
+   }
+});
 
 socket.on('chatter', (message) => {
     let decryptChat = decryptMessage(message);
