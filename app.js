@@ -122,7 +122,7 @@ app.post('/join', (req, res) => {
 let connectList = {"userCount": 0, "onlineList": []}; // connectUserInformationList
 let messageHistory = [];
 io.on('connection', (socket) => {	
-	const connectUser = socket.handshake.session.user;
+	let connectUser = socket.handshake.session.user;
 	
 	if(connectUser !== undefined) {
 		connectList.onlineList.push(getConnectUserList(socket));
@@ -143,8 +143,15 @@ io.on('connection', (socket) => {
     
     socket.on('disconnect', () => {
 		if(!connectUser) return;
-		connectList.onlineList.splice(connectList.onlineList.indexOf(connectUser), 1);
+		
+		for(let i=0; i<connectList.onlineList.length; i++) {
+			if(connectList.onlineList[i].idx === connectUser.idx) {
+				connetList.onlineList.splice(i, 1);
+				break;
+			}
+		}
 		connectList.userCount = getConnectUserCount();
+		
 		let broadcastMessage = `[Admin] a "${connectUser.nickname}" disconnected.`;
         io.emit('disconnect', broadcastMessage, connectList);
     });
@@ -174,7 +181,6 @@ function getConnectUserList(socket) {
 	let userIDX = csSessionData.idx;
 	let userNick = csSessionData.nickname;
 	let socID = socket.id;
-	let connectTotalUsers = getConnectUserCount();
 	let json = `{"idx": ${userIDX}, "nickname": "${userNick}", "socID": "${socID}"}`;
 	
 	return json;
