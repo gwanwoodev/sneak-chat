@@ -143,13 +143,7 @@ io.on('connection', (socket) => {
     
     socket.on('disconnect', () => {
 		if(!connectUser) return;
-		
-		for(let i=0; i<connectList.onlineList.length; i++) {
-			if(connectList.onlineList[i].idx === connectUser.idx) {
-				connetList.onlineList.splice(i, 1);
-				break;
-			}
-		}
+		disconnectUser(connectUser.idx);
 		connectList.userCount = getConnectUserCount();
 		
 		let broadcastMessage = `[Admin] a "${connectUser.nickname}" disconnected.`;
@@ -184,4 +178,15 @@ function getConnectUserList(socket) {
 	let json = `{"idx": ${userIDX}, "nickname": "${userNick}", "socID": "${socID}"}`;
 	
 	return json;
+}
+
+//Disconnect => delete user from connectList Array.
+function disconnectUser(connectUserIDX) {
+	for(let i=0; i<connectList.onlineList.length; i++) {
+		let connect_json = JSON.parse(connectList.onlineList[i]);
+		if(connect_json.idx === connectUserIDX) {
+			connectList.onlineList.splice(i, 1);
+			break;
+		}
+	}
 }
