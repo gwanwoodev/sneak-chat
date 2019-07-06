@@ -135,10 +135,9 @@ io.on('connection', (socket) => {
 	}
 	
 	
-    socket.on('chatter', (message) => {
-        let encryptMessage = CryptoJS.AES.encrypt(message, 'king');
-		messageHistory.push(encryptMessage.toString());
-        io.emit('chatter', encryptMessage.toString());
+    socket.on('chatter', (encryptMessage) => {
+		messageHistory.push(encryptMessage);
+        io.emit('chatter', encryptMessage);
     });
     
     socket.on('disconnect', () => {

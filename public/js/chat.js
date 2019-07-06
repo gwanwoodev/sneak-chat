@@ -69,11 +69,18 @@ socket.on('disconnect', (message, connectList) => {
 
 $('form').submit(function() {
     const message = $("#message").val();
+	const nickname = user.nickname;
+	const dateString = getHoursAndMinutes();
+	const resultEncryptMessages = encryptMessage(`[${dateString}] ${user.nickname} : ${message}`).toString();
 	$("#message").val("");
-    const dateString = getHoursAndMinutes();
-    socket.emit('chatter', `[${dateString}] ${user.nickname} : ${message}`);
+    socket.emit('chatter', resultEncryptMessages);
     return false;
 });
+
+// Encrypt Messages.
+function encryptMessage(message) {
+	return CryptoJS.AES.encrypt(message, 'king');
+}
 
 // Decrypt Messages.
 function decryptMessage(message) {
