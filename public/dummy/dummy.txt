@@ -88,7 +88,7 @@ what exactly is gone on, is&#39;t a problem in the server or w..." />
 
 
 
-<header class="top-bar js-top-bar top-bar__network _fixed">
+<header class="top-bar js-top-bar top-bar__network _fixed top-bar-fix">
     <div class="-container" role="menubar">
         <div class="-main">
                 <a href="#" class="left-sidebar-toggle p0 ai-center jc-center js-left-sidebar-toggle" role="menuitem" aria-haspopup="true" aria-controls="left-sidebar" aria-expanded="false"><span class="ps-relative"></span></a>
@@ -183,7 +183,7 @@ what exactly is gone on, is&#39;t a problem in the server or w..." />
                     <div class="ps-relative">
                         <input name="q"
                                type="text"
-                               placeholder="Search°¶"
+                               placeholder="SearchÀá"
                                value=""
                                autocomplete="off"
                                maxlength="240"
@@ -669,7 +669,7 @@ Is this question similar to what you get asked at work? <a href="/teams" data-ga
 
     <aside class="grid ai-start jc-space-between js-answer-help s-notice s-notice__warning pb0 pr4 pt4 mb8 d-none" role="status" aria-hidden="true">
     <div class="grid--cell pt8">
-        <p>Thanks for contributing an answer to Stack Overflow!</p><ul><li>Please be sure to <em>answer the question</em>. Provide details and share your research!</li></ul><p>But <em>avoid</em> °¶</p><ul><li>Asking for help, clarification, or responding to other answers.</li><li>Making statements based on opinion; back them up with references or personal experience.</li></ul><p>To learn more, see our <a href="/help/how-to-answer">tips on writing great answers</a>.</p>
+        <p>Thanks for contributing an answer to Stack Overflow!</p><ul><li>Please be sure to <em>answer the question</em>. Provide details and share your research!</li></ul><p>But <em>avoid</em> Àá</p><ul><li>Asking for help, clarification, or responding to other answers.</li><li>Making statements based on opinion; back them up with references or personal experience.</li></ul><p>To learn more, see our <a href="/help/how-to-answer">tips on writing great answers</a>.</p>
     </div>
     <button class="grid--cell js-answer-help-close-btn s-btn s-btn__muted fc-dark">
         <svg aria-hidden="true" class="svg-icon iconClear" width="18" height="18" viewBox="0 0 18 18"><path d="M15 4.41L13.59 3 9 7.59 4.41 3 3 4.41 7.59 9 3 13.59 4.41 15 9 10.41 13.59 15 15 13.59 10.41 9 15 4.41z"/></svg>
@@ -786,7 +786,7 @@ Post Your Answer                                    </button>
                                         Discard
                                     </button>
                                         <p class="privacy-policy-agreement">
-                                            By clicking °∞Post Your Answer°±, you agree to our <a href='https://stackoverflow.com/legal/terms-of-service/public' name='tos' target='_blank' class='-link'>terms of service</a>, <a href='https://stackoverflow.com/legal/privacy-policy' name='privacy' target='_blank' class='-link'>privacy policy</a> and <a href='https://stackoverflow.com/legal/cookie-policy' name='cookie' target='_blank' class='-link'>cookie policy</a><input type="hidden" name="legalLinksShown" value="1" />
+                                            By clicking ‚ÄúPost Your Answer‚Äù, you agree to our <a href='https://stackoverflow.com/legal/terms-of-service/public' name='tos' target='_blank' class='-link'>terms of service</a>, <a href='https://stackoverflow.com/legal/privacy-policy' name='privacy' target='_blank' class='-link'>privacy policy</a> and <a href='https://stackoverflow.com/legal/cookie-policy' name='cookie' target='_blank' class='-link'>cookie policy</a><input type="hidden" name="legalLinksShown" value="1" />
                                         </p>
                                 </div>
                         </form>
@@ -836,7 +836,7 @@ Post Your Answer                                    </button>
 <div class="favicon favicon-stackexchangemeta" title="Meta Stack Exchange"></div>                </a>
         </div>
         <div class="grid--cell">
-            <a href="https://stackoverflow.blog/2019/06/20/intuit-knowledge-engineering-machine-learning-ai/" title="Knowledge Engineering: Intuit°Øs Chief Innovation Officer Explains Their Approach to AI" data-ga="[&quot;community bulletin board&quot;,&quot;Blog&quot;,&quot;https://stackoverflow.blog/2019/06/20/intuit-knowledge-engineering-machine-learning-ai/&quot;,null,null]">Knowledge Engineering: Intuit°Øs Chief Innovation Officer Explains Their&hellip;</a>
+            <a href="https://stackoverflow.blog/2019/06/20/intuit-knowledge-engineering-machine-learning-ai/" title="Knowledge Engineering: Intuit‚Äôs Chief Innovation Officer Explains Their Approach to AI" data-ga="[&quot;community bulletin board&quot;,&quot;Blog&quot;,&quot;https://stackoverflow.blog/2019/06/20/intuit-knowledge-engineering-machine-learning-ai/&quot;,null,null]">Knowledge Engineering: Intuit‚Äôs Chief Innovation Officer Explains Their&hellip;</a>
         </div>
     </li>
         </ul>
@@ -1184,7 +1184,7 @@ Post Your Answer                                    </button>
                 <li class="-item"><a href="https://dsp.stackexchange.com" class="-link js-gps-track" data-gps-track="footer.click({ location: 1, link: 25 })" title="practitioners of the art and science of signal, image and video processing">Signal Processing</a></li>
                 <li class="-item"><a href="https://emacs.stackexchange.com" class="-link js-gps-track" data-gps-track="footer.click({ location: 1, link: 25 })" title="those using, extending or developing Emacs">Emacs</a></li>
                 <li class="-item"><a href="https://raspberrypi.stackexchange.com" class="-link js-gps-track" data-gps-track="footer.click({ location: 1, link: 25 })" title="users and developers of hardware and software for Raspberry Pi">Raspberry Pi</a></li>
-                <li class="-item"><a href="https://ru.stackoverflow.com" class="-link js-gps-track" data-gps-track="footer.click({ location: 1, link: 25 })" title="¨·¨‚¨‡¨‘¨‚¨—¨ﬁ¨ﬁ¨⁄¨„¨‰¨‡¨”">Stack Overflow ¨ﬂ¨— ¨‚¨Â¨„¨„¨‹¨‡¨ﬁ</a></li>
+                <li class="-item"><a href="https://ru.stackoverflow.com" class="-link js-gps-track" data-gps-track="footer.click({ location: 1, link: 25 })" title="ÓÉºÓÉΩÓÉªÓÉØÓÉΩÓÉ¨ÓÉπÓÉπÓÉµÓÉæÓÉøÓÉªÓÉÆ">Stack Overflow ÓÉ∫ÓÉ¨ ÓÉΩÓÑÄÓÉæÓÉæÓÉ∑ÓÉªÓÉπ</a></li>
                 <li class="-item"><a href="https://codegolf.stackexchange.com" class="-link js-gps-track" data-gps-track="footer.click({ location: 1, link: 25 })" title="programming puzzle enthusiasts and code golfers">Code Golf</a></li>
                     </ul></div><div class="site-footer--col site-footer--category js-footer-col" data-name="Technology"><ul class="-list">
                 <li class="-item"><a href="https://es.stackoverflow.com" class="-link js-gps-track" data-gps-track="footer.click({ location: 1, link: 25 })" title="programadores y profesionales de la inform&#225;tica">Stack Overflow en espa&#241;ol</a></li>
